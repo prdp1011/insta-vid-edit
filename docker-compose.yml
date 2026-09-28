@@ -1,0 +1,14 @@
+services:
+  worker:
+    build: ./worker
+    ports:
+      - "8080:8080"
+    environment:
+      STORAGE_ROOT: /data
+      WORKER_SIGNING_SECRET: ${WORKER_SIGNING_SECRET}
+    volumes:
+      - framepilot_media:/data
+    restart: unless-stopped
+
+volumes:
+  framepilot_media:
